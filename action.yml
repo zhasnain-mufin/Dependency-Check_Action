@@ -9,7 +9,7 @@ inputs:
 steps:
     - uses: actions/checkout@v2
     - name: Dependency check action     
-      uses: 'docker://??:latest'
+      uses: 'docker://owasp/dependency-check-action:latest'
       with:
           args:
             - '--project'
