@@ -1,4 +1,4 @@
-name: 'Dependency_check action'
+name: 'Depcheck action'
 inputs:
     project:
         required: true
@@ -6,18 +6,17 @@ inputs:
         required: true  
     format:
         required: true
-steps:
-    - uses: actions/checkout@v2
-    - name: Dependency check action     
-      uses: 'docker://owasp/dependency-check-action:latest'
-      with:
-          args:
-            - '--project'
-            - '${{ inputs.project }}'
-            - '--scan'
-            - '${{ inputs.path }}'
-            - '--format' 
-            - '${{ inputs.format }}'
-            - '--out'
-            -  '/github/workspace/reports'
-            - '--noupdate'
+runs:
+    using: 'docker'
+    image: 'docker://owasp/dependency-check-action:latest'
+    args:
+
+        - '--project'
+        - '${{ inputs.project }}'
+        - '--scan'
+        - '${{ inputs.path }}'
+        - '--format' 
+        - '${{ inputs.format }}'
+        - '--out'
+        -  '/github/workspace/reports'
+        - '--noupdate'
