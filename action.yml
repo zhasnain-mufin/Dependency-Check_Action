@@ -1,4 +1,9 @@
 name: 'Depcheck action'
+description: 'Github action to execute dependency check as part of a github workflow'
+Author: 'javixeneize'
+branding:
+  icon: 'shield'  
+  color: 'red'
 inputs:
     project:
         required: true
