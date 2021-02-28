@@ -20,7 +20,7 @@ jobs:
       - name: Build project with Maven
         run: mvn clean install
       - name: Depcheck
-        uses: javixeneize/DependencyCheck_Action@main
+        uses: dependency-check/Dependency-Check_Action@main
         id: Depcheck
         with:
           project: 'test'
