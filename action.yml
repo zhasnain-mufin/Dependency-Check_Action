@@ -11,6 +11,8 @@ inputs:
         required: true  
     format:
         required: true
+    others:
+        required: false
 runs:
     using: 'docker'
     image: 'docker://owasp/dependency-check-action:latest'
@@ -25,3 +27,4 @@ runs:
         - '--out'
         -  '/github/workspace/reports'
         - '--noupdate'
+        - '${{ inputs.others }}'

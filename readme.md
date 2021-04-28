@@ -32,12 +32,15 @@ jobs:
           project: 'test'
           path: '.'
           format: 'HTML'    
+          others: ''
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
            name: Depcheck report
            path: ${{github.workspace}}/reports
 ```
+
+*others* allows to pass random flags and parameters to the binary.
 
 # How Do I Use It?
 We recommend adding the above example into your .github/workflows directory, using a name of your choice, in this example main.yml.
