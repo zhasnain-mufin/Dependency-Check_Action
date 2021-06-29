@@ -26,4 +26,5 @@ runs:
         - '${{ inputs.format }}'
         - '--out'
         -  '/github/workspace/reports'
+        - '--noupdate'
         - ${{ inputs.args }}
