@@ -44,6 +44,23 @@ jobs:
 
 *args* allows to pass established flags and parameters to the binary. Check the [arguments page](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) for valid options
 
+### Error: JAVA_HOME is not defined correctly 
+When used in conjunction with the GitHub Action [setup-java](https://github.com/actions/setup-java) you will see the error `Error: JAVA_HOME is not defined correctly`
+
+This is due to the environment variable `JAVA_HOME` being changed by the setup-java GitHub Action. To fix this problem you will need to reset `JAVA_HOME` to match how it's being set in the image [Dependency-Check Docker Image](https://github.com/jeremylong/DependencyCheck/blob/main/Dockerfile#L16) within the Depcheck step. 
+
+Example:
+```
+```yaml
+...
+- name: Depcheck
+uses: dependency-check/Dependency-Check_Action@main
+env:
+  # actions/setup-java@v1 changes JAVA_HOME so it needs to be reset to match the depcheck image
+  JAVA_HOME: /opt/jdk
+...
+```
+
 # How Do I Use It?
 We recommend adding the above example into your .github/workflows directory, using a name of your choice, in this example main.yml.
 
