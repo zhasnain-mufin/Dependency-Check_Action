@@ -9,7 +9,16 @@ This action is based upon the OWASP Dependency-Check [tool](https://owasp.org/ww
 
 # How does it work?
 
-The action receives three parameters: Project name, scanpath and report format, but more parameters can be added as optional. 
+The action has three required parameters:
+
+- `project`: the project name
+- `path`: the scanpath
+- `format`: the report format
+
+Additionally, you can specify:
+
+- `out`: the output folder location relative to the github workspace, by default it will be `reports`
+- `args`: any remaining flags and parameters to the binary, check the [arguments page](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) for valid options
 
 Example:
 ```
@@ -31,7 +40,8 @@ jobs:
         with:
           project: 'test'
           path: '.'
-          format: 'HTML'    
+          format: 'HTML'
+          out: 'reports' # this is the default, no need to specify unless you wish to override it
           args: >
             --failOnCVSS 7
             --enableRetired
@@ -41,8 +51,6 @@ jobs:
            name: Depcheck report
            path: ${{github.workspace}}/reports
 ```
-
-*args* allows to pass established flags and parameters to the binary. Check the [arguments page](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) for valid options
 
 ### Error: JAVA_HOME is not defined correctly 
 When used in conjunction with the GitHub Action [setup-java](https://github.com/actions/setup-java) you will see the error `Error: JAVA_HOME is not defined correctly`

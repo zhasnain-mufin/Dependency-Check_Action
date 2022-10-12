@@ -11,6 +11,10 @@ inputs:
         required: true  
     format:
         required: true
+    out:
+        required: true
+        default: 'reports'
+
     args:
         required: false
 runs:
@@ -25,6 +29,6 @@ runs:
         - '--format' 
         - '${{ inputs.format }}'
         - '--out'
-        -  '/github/workspace/reports'
+        -  '/github/workspace/${{ inputs.out }}'
         - '--noupdate'
         - ${{ inputs.args }}
