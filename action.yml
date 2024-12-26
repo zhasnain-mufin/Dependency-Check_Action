@@ -25,10 +25,10 @@ runs:
         - '--project'
         - '${{ inputs.project }}'
         - '--scan'
-        - '/github/workspace/${{ inputs.path }}'
+        - '${{ inputs.path }}'
         - '--format' 
         - '${{ inputs.format }}'
         - '--out'
-        - '/github/workspace/${{ inputs.out }}'
+        - '${{ inputs.out }}'
         - '--noupdate'
         - ${{ inputs.args }}
